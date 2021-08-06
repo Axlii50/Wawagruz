@@ -1,0 +1,70 @@
+﻿@model IEnumerable<Wawagruz.Models.DeliveryModel>
+
+@{
+    ViewData["Title"] = "Deliver Panel";
+}
+
+<h1>Panel z zgłoszeniami zrealizowania</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Imie Klienta
+            </th>
+            <th>
+                Adres
+            </th>
+            <th>
+                Data zamówienia
+            </th>
+            <th>
+                Telefon Klienta
+            </th>
+            <th>
+                Status zamówienia
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ClientName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Adress)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TimeOfOrdering)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PhoneNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Status)
+                </td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@item.ID">Detale</a> |
+                    @if (item.Status == EnumesTypes.OrderStatus.Do_Dostarczenia)
+                    {
+                        <a asp-action="Delivered" asp-route-id="@item.ID">Dostarczone</a> 
+                    }
+                    @if (item.Status == EnumesTypes.OrderStatus.Do_Odebrania)
+                    {
+                        <a asp-action="GotBack" asp-route-id="@item.ID">Odebrane</a> 
+                    }
+
+
+
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+@section css{
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+}

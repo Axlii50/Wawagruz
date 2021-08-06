@@ -1,0 +1,25 @@
+﻿@model VeryficationModel
+
+@{
+    ViewData["Title"] = "VeryficationDelivery";
+}
+
+<div style="margin:auto;padding:25px;max-width:500px">
+    <form asp-action="VeryficationPanelDelivery" method="post">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group">
+            <label asp-for="Mail" class="control-label">Mail Autoryzacyjny</label>
+            <input asp-for="Mail" class="form-control" />
+            <span asp-validation-for="Mail" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <input type="submit" value="Wyślij" class="btn btn-primary" />
+        </div>
+    </form>
+</div>
+
+@section css{
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+}

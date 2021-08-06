@@ -1,0 +1,158 @@
+﻿@model ContactModel
+
+@{
+    ViewData["Title"] = "Home";
+}
+
+
+<!DOCTYPE html>
+<html lang="PL">
+
+<head>
+    <title>Home</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"
+          rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="~/js/scripts.js"></script>
+</head>
+
+<body>
+    <!-- NAVBAR-->
+    <nav class="navbar">
+        <div class="inner-width">
+
+            <button class="menu-toggler">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <div class="navbar-menu">
+                <a href="#home">HOME</a>
+                <a href="#about">O NAS</a>
+                <a href="#offers">OFERTA</a>
+                <a href="#contact">KONTAKT</a>
+            </div>
+        </div>
+    </nav>
+    <!-- HOME -->
+    <section id="home">
+        <div class="inner-width">
+            <div class="content">
+                <h1>WAWA GRUZ</h1>
+                <div class="buttons">
+                    <a href="#offers">ZAMÓW</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="about">
+        <div class="inner-width">
+            <h1 class="section-title" style="margin-top: 20px;">O nas</h1>
+            <div class="about-content">
+                <img src="~/img/logo.png" alt="" class="about-pic">
+                <div class="about-text">
+                    <h1>WAWAGRUZ</h1>
+                    <p>
+                        Zajmujemy się profesjonalną obsługą klienta w zakresie wywozu gruzu. Oferujemy Państwu m.in. duże worki tzw. Big Bag o ładowności 1,3m³. Atrakcyjne ceny, przy większych zamówieniach promocje!!
+                        <br />
+                        Zamówienia składane do 17, będą realizowane do 12 kolejnego dnia na terenie Warszawy. Zamówienia składane poza terenem Warszawy, będą realizowane w terminie uzgodnionym telefonicznie.
+                        <br />
+                        <br />
+                        Płatność: <br />
+                        Płatność gotówkowa przy podstawieniu lub odbiorze worków.
+                        <br />
+                        <br />
+                        Odbiór worków: <br />
+                        Warszawa 4dni<br />
+                        Poza Warszawą 7dni<br />
+                        <br />
+                        Kontakt:<br />
+                        794 387 953<br />
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="offers" class="dark">
+        <div class="inner-width">
+            <h1 class="section-title"> Oferta</h1>
+            <div class="offers">
+                <a href="#contact" class="offer">
+                    <img src="~/img/bg.png" alt="">
+                    <div class="info">
+                        <h3>Worek 1</h3>
+                        <div class="cat">Worek na gruz</div>
+                    </div>
+                </a>
+                <a href="#contact" class="offer">
+                    <img src="~/img/bg.png" alt="">
+                    <div class="info">
+                        <h3>Worek 2</h3>
+                        <div class="cat">Worek na gruz</div>
+                    </div>
+                </a>
+                <a href="#contact" class="offer">
+                    <img src="~/img/bg.png" alt="">
+                    <div class="info">
+                        <h3>Worek 3</h3>
+                        <div class="cat">Worek na gruz</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+    <section id="contact">
+        <div class="inner-width">
+            <h1 class="section-title">Kontakt</h1>
+            <div class="contact-info">
+                <div class="item">
+                    <i class="fas fa-mobile-alt"></i>
+                    +48 794 387 953
+                </div>
+
+                <div class="item">
+                    <i class="fas fa-envelope"></i>
+                    wawagruz@gmail.com
+                </div>
+
+                <div class="item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    Warszawa
+                </div>
+            </div>
+
+            <form asp-action="Index" class="contact-form">
+                <input asp-for="Name" type="text" class="nameZone" placeholder="Imie i nazwisko">
+                <input asp-for="Email" type="email" class="emailZone" placeholder="E-Mail">
+                <input asp-for="Subject" type="text" class="subjectZone" placeholder="Temat">
+                <textarea asp-for="Message" class="messageZone" placeholder="Wiadomosc"></textarea>
+                <input type="submit" value="Wyślij zapytanie" class="btn">
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="inner-width">
+            <div class="copyright">
+                &copy; 2021 | Created by JR
+            </div>
+        </div>
+    </footer>
+
+    <!-- Go Top BTN -->
+    <button class="goTop fas fa-arrow-up"></button>
+</body>
+
+</html>
+
+@section css{
+    <link rel="stylesheet" href="~/css/StyleSheet.css">
+}

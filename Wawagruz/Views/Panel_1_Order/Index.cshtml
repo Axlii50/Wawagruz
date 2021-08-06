@@ -1,0 +1,70 @@
+﻿@model IEnumerable<Wawagruz.Models.OrderModel>
+
+@{
+    ViewData["Title"] = "Main Panel";
+}
+
+<h1>Głowny panel zarządzania</h1>
+
+<p>
+    <a asp-action="Create">Stwórz nowy</a> |
+    <a asp-action="DeliveryPanel">Przejdz do drugiego panelu </a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Imie Klienta
+            </th>
+            <th>
+                Adres
+            </th>
+            <th>
+               Data zamówienia
+            </th>
+            <th>
+                Telefon Klienta
+            </th>
+            <th>
+                Status zamówienia
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ClientName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Adress)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TimeOfOrdering)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PhoneNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Status)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.ID">Edytuj</a> |
+                    <a asp-action="Details" asp-route-id="@item.ID">Detale</a> |
+                    <a asp-action="Delete" asp-route-id="@item.ID">Usuń</a>
+                   @if (item.Status != EnumesTypes.OrderStatus.Zakonczony)
+                    {
+                    <a> |</a>
+                    <a asp-action="Move" asp-route-id="@item.ID">Aktywuj</a>
+                    }
+                </td>
+            </tr>
+         }
+    </tbody>
+</table>
+@section css{
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+}

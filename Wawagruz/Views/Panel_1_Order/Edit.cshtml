@@ -1,0 +1,94 @@
+﻿@model Wawagruz.Models.OrderModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>OrderModel</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="ID" />
+            <div class="form-group">
+                <label asp-for="ClientName" class="control-label"></label>
+                <input asp-for="ClientName" class="form-control" />
+                <span asp-validation-for="ClientName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Adress" class="control-label"></label>
+                <input asp-for="Adress" class="form-control" />
+                <span asp-validation-for="Adress" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TimeOfOrdering" class="control-label"></label>
+                <input asp-for="TimeOfOrdering" class="form-control" />
+                <span asp-validation-for="TimeOfOrdering" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PhoneNumber" class="control-label"></label>
+                <input asp-for="PhoneNumber" class="form-control" />
+                <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="OrderContentType" class="control-label"></label>
+                <select asp-for="OrderContentType" class="form-control">
+                    @foreach (var item in EnumesTypes.GetBagTypes().Items)
+                    {
+                        @if ((EnumesTypes.BagTypes)Enum.Parse(typeof(EnumesTypes.BagTypes), item.ToString()) == Model.OrderContentType)
+                        {
+                            <option selected="selected">@item.ToString()</option>
+                        }
+                        else
+                        {
+                            <option>@item.ToString()</option>
+                        }
+                    }
+
+                </select>
+                <span asp-validation-for="OrderContentType" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="OrderContentCount" class="control-label"></label>
+                <input asp-for="OrderContentCount" class="form-control" />
+                <span asp-validation-for="OrderContentCount" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Status" class="control-label"></label>
+                <select asp-for="Status" class="form-control">
+                    @foreach (var item in EnumesTypes.GetOrderTypes().Items)
+                    {
+                        @if ((EnumesTypes.OrderStatus)Enum.Parse(typeof(EnumesTypes.OrderStatus), item.ToString()) == Model.Status)
+                        {
+                            <option selected="selected">@item.ToString()</option>
+                        }
+                        else
+                        {
+                            <option>@item.ToString()</option>
+                        }
+                    }
+
+                </select>
+                <span asp-validation-for="Status" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+@section css{
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+}
