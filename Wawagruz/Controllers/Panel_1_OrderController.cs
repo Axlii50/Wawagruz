@@ -31,7 +31,6 @@ namespace Wawagruz
         }
 
         // GET: Panel_1_Order/Details/5
-        
         public async Task<IActionResult> Details(string id)
         {
             if (id == null)
@@ -49,7 +48,6 @@ namespace Wawagruz
             return View(orderModel);
         }
 
-        
         public async Task<IActionResult> Create()
         {
             var creating = new OrderModel()
@@ -74,13 +72,10 @@ namespace Wawagruz
         }
 
         // GET: Panel_1_Order/Edit/5
-        
         public async Task<IActionResult> Edit(string id)
         {
             if (id == null)
-            {
                 return NotFound();
-            }
 
             var orderModel = await _context.Order.FindAsync(id);
             if (orderModel == null)
@@ -125,8 +120,7 @@ namespace Wawagruz
             return View(orderModel);
         }
 
-        //change to finish
-        [ActionName("Move")]
+        //[ActionName("Move")]
         [Route("Move/{id}")]
         public async Task<IActionResult> Move(string id)
         {
@@ -141,18 +135,14 @@ namespace Wawagruz
             _context.Order.Remove((OrderModel)tomove);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
-            //return View("Index");
         }
 
-
-        public async Task<IActionResult> DeliveryPanel()
+        public IActionResult DeliveryPanel()
         {
             return RedirectToAction("Index", "Panel_2_Order");
         }
 
-
         // GET: Panel_1_Order/Delete/5
-
         public async Task<IActionResult> Delete(string id)
         {
             if (id == null)
@@ -181,7 +171,6 @@ namespace Wawagruz
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
-
 
         private bool OrderModelExists(string id)
         {
